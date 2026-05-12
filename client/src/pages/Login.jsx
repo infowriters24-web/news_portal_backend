@@ -89,7 +89,7 @@ const Login = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="admin@factfile24.com"
+                    placeholder="admin@writers24.net"
                     className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F7941D] focus:border-transparent transition-all duration-200"
                     required
                   />

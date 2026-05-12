@@ -51,7 +51,7 @@ const Sidebar = () => {
         <div className="h-[70px] flex justify-center items-center">
           <Link to={"/"} onClick={() => setIsOpen(false)}>
             <h1 className="text-2xl font-bold text-headerColor">
-              FACT <span className="text-btnColor">FILE</span> 24.com
+              Writers<span className="text-btnColor">24</span>
             </h1>
           </Link>
         </div>
