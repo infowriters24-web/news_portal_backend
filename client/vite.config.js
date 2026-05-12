@@ -23,4 +23,7 @@ export default defineConfig({
       },
     },
   },
+  preview: {
+    allowedHosts: ["admin.writers24.net"],
+  },
 });
