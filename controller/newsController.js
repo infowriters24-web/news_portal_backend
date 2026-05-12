@@ -22,6 +22,16 @@ class NewsController {
       if (!files.image || !files.image[0]) {
         return res.status(400).json({ message: "Image is required" });
       }
+      const cloudinaryConfig = cloudinary.config();
+      if (
+        !cloudinaryConfig?.cloud_name ||
+        !cloudinaryConfig?.api_key ||
+        !cloudinaryConfig?.api_secret
+      ) {
+        return res.status(500).json({
+          message: "Cloudinary credentials are missing in server environment",
+        });
+      }
 
       const imageFile = files.image[0];
 
@@ -120,6 +130,16 @@ class NewsController {
       let publicId = existingNews.public_id;
 
       if (files.image && files.image[0]) {
+        const cloudinaryConfig = cloudinary.config();
+        if (
+          !cloudinaryConfig?.cloud_name ||
+          !cloudinaryConfig?.api_key ||
+          !cloudinaryConfig?.api_secret
+        ) {
+          return res.status(500).json({
+            message: "Cloudinary credentials are missing in server environment",
+          });
+        }
         if (publicId) {
           await cloudinary.uploader.destroy(publicId);
         }

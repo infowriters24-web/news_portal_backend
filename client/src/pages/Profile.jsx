@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import axios from "axios";
 import StoreContext from "@/context/storeContext";
+import { baseURL } from "@/config/Config";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -15,7 +16,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!token) return;
-    axios.get("/api/profile", { headers: { Authorization: `Bearer ${token}` } })
+    axios.get(`${baseURL}/api/profile`, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => setUser(res.data.user))
       .catch((error) => console.log(error));
   }, [token]);
@@ -33,7 +34,7 @@ const Profile = () => {
     const formData = new FormData();
     formData.append("image", imageFile);
     try {
-      const res = await axios.put("/api/profile", formData, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.put(`${baseURL}/api/profile`, formData, { headers: { Authorization: `Bearer ${token}` } });
       setUser(res.data.user);
       setMessage({ type: "success", text: "Profile image updated!" });
       setImageFile(null);
@@ -48,7 +49,7 @@ const Profile = () => {
   const handlePasswordChange = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/change-password", passwordData, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.post(`${baseURL}/api/change-password`, passwordData, { headers: { Authorization: `Bearer ${token}` } });
       setMessage({ type: "success", text: res.data.message });
       setPasswordData({ oldPassword: "", newPassword: "" });
     } catch (err) {

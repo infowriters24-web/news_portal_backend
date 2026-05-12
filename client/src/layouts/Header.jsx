@@ -2,6 +2,7 @@ import StoreContext from "@/context/storeContext";
 import { useContext, useEffect, useState } from "react";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import axios from "axios";
+import { baseURL } from "@/config/Config";
 
 const Header = () => {
   const { store } = useContext(StoreContext);
@@ -11,7 +12,7 @@ const Header = () => {
   useEffect(() => {
     if (!token) return;
     axios
-      .get("/api/profile", {
+      .get(`${baseURL}/api/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setProfileImage(res.data.user?.image || ""))
