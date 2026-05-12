@@ -16,6 +16,7 @@ export default defineConfig({
     },
   },
   server: {
+    allowedHosts: ["admin.writers24.net"],
     proxy: {
       "/api": {
         target: "http://localhost:4000",
@@ -24,6 +25,6 @@ export default defineConfig({
     },
   },
   preview: {
-    allowedHosts: ["admin.writers24.net"],
+    allowedHosts: true,
   },
 });
