@@ -5,7 +5,8 @@
   "scripts": {
     "server": "nodemon server.js",
     "start": "node server.js",
-    "build": "npm run build --prefix client",
+    "build": "node -e \"console.log('Backend build step skipped')\"",
+    "build:client": "npm run build --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run dev --prefix client\""
   },
   "keywords": [],
